@@ -1,0 +1,100 @@
+plugin.tx_aigallery_pi1 {
+
+  #cat=aigallery; type=string; label= Template File Path:
+  templateFile =
+  
+  #cat=aigallery; type=int+; label= PID of gallery records to load:
+  galleryPid = 
+  
+  #cat=aigallery; type=int+; label= PID of page for single view:
+  singlePid = 
+  
+  #cat=aigallery; type=string; label= Gallery DB Table:
+  galleryTable = tx_aigallery_galleries
+  
+  #cat=aigallery; type=string; label= Prefix for the locallang values when used in the html template:
+  llPrefix = LANG_
+
+  #cat=aigallery; type=string; label= Fields to exclude from being in the marker array:
+  noMarkerFields = images,max_images,title_attributes,alt_attributes
+  
+  #cat=aigallery; type=string; label= Default alt field:
+  imgAltField = alt_attributes
+  
+  #cat=aigallery; type=string; label= Default title field:
+  imgTitleField = title_attributes
+  
+  #cat=aigallery; type=string; label= Default image description field:
+  imgDescriptionField = image_descriptions
+  
+  #cat=aigallery; type=string; label= Split Char for alt and title tags:
+  splitChar = 10
+  
+  #cat=aigallery; type=string; label= Path to this extension uploads:
+  uploadsPath = uploads/tx_aigallery/
+  
+  #cat=aigallery; type=string; label= DB Field used for image:
+  imageField = images
+  
+  #cat=aigallery; type=string; label= DB Field used for title:
+  titleField = title
+  
+  #cat=aigallery; type=string; label= DB Field used for description:
+  descriptionField = description
+  
+  #cat=aigallery; type=string; label= DB Fields to read from the table:
+  repositoryFields = uid,pid,title,description, images, alt_attributes, title_attributes,image_descriptions
+  
+  #cat=aigallery; type=boolean; label= Test integrity of repository fields:
+  verifyRepositoryFields = 1
+  
+  fields {
+  
+    listView {
+    
+      teaserimage {
+          
+        #cat=aigallery; type=string; label= Maximum teaserimage width:
+        maxW = 100c
+        
+        #cat=aigallery; type=string; label= Minimum teaserimage width:
+        minW = 
+          
+        #cat=aigallery; type=string; label= Maximum teaserimage height:
+        maxH = 100c
+        
+        #cat=aigallery; type=string; label= Minimum teaserimage height:
+        minH =
+        
+        #cat=aigallery; type=string; label= DB Field used for image:
+        imageField = images
+        
+        #cat=aigallery; type=int+; label= Numerical index for the teaser image:
+        listNum = 0
+      }
+    }
+    
+    singleView {
+    
+      images {
+          
+        #cat=aigallery; type=string; label= Images width:
+        width = 85c
+          
+        #cat=aigallery; type=string; label= Images height:
+        height = 85c
+
+      }
+    }
+    
+  }
+
+  defaults {
+  
+    #cat=aigallery; type=int+; label= Default offset start:
+    pagingStart = 0
+  
+    #cat=aigallery; type=int+; label= Default offset length:
+    pagingLength = 30
+  }
+}

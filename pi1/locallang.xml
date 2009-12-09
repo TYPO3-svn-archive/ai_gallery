@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_aigallery_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="more">more</label>
+			<label index="heading">Gallery</label>
+			<label index="togallery">More Pictures</label>
+			<label index="imagecount">Pictures in Album</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+            <label index="more">zu den Details</label>
+			<label index="heading">Bildergalerie</label>
+			<label index="togallery">Mehr Fotos</label>
+			<label index="imagecount">Fotos im Album</label>
+        </languageKey>
+	</data>
+</T3locallang>

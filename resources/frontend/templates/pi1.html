@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Gallery example template</title>
+</head>
+<body>
+	
+<h2>Template List</h2>
+<em>Subpart for the LIST Action template.</em>
+<br />
+<!-- ###TEMPLATE_LIST### begin -->
+
+    <!-- ###CONTENT### begin 
+	     This is the part of the template substituted with the list of galleries
+	-->
+	 ###GALLERY_COUNT###
+	 ###GALLERY_SELECTOR###
+	   <!-- ###GALLERY### begin
+	        Template for a single item
+	   -->
+	   <div class="media media-left">
+	   	 <div class="media-hd">
+	   	 	###TEASERIMAGE###
+	   	 </div>
+		 <div class="media-bd gallerylistbody">
+		 	###TITLE###
+            ###DESCRIPTION###
+            ###COUNT###
+		 </div>
+	   </div>
+	   <!-- ###GALLERY### end -->
+	<!-- ###CONTENT### end -->
+	
+
+<!-- ###TEMPLATE_LIST### end -->
+<br />
+<br />
+<br />
+<br />
+<h2>Template Latest</h2>
+<em>Subpart for the LATEST Action template.</em>
+<br />
+<!-- ###TEMPLATE_LATEST### begin -->
+
+    <!-- ###CONTENT### begin 
+         This is the part of the template substituted with the list of galleries
+    -->
+     ###HEADING###
+       <!-- ###GALLERY### begin
+            Template for a single item
+       -->
+        ###IMAGES###
+        ###MORE###
+       <!-- ###GALLERY### end -->
+    <!-- ###CONTENT### end -->
+    
+
+<!-- ###TEMPLATE_LATEST### end -->
+<br />
+<br />
+<br />
+<br />
+<h2>Template Single</h2>
+<em>Subpart for the SINGLE Action template.</em>
+<br />
+<!-- ###TEMPLATE_SINGLE### begin -->
+
+    <!-- ###CONTENT### begin 
+         This is the part of the template substituted with the single gallery
+    -->
+     ###GALLERY_SELECTOR###
+       <!-- ###GALLERY### begin
+            Template for a single item
+       -->
+       ###TITLE###
+        ###IMAGES###
+       <!-- ###GALLERY### end -->
+	   ###PAGING###
+	   ###GALLERY_NAVIGATION###
+    <!-- ###CONTENT### end -->
+    
+
+<!-- ###TEMPLATE_SINGLE### end -->
+<br />
+<br />
+<br />
+<br />
+<h2>Template Menu</h2>
+<em>Subpart for the MENU Action template.</em>
+<br />
+<!-- ###TEMPLATE_MENU### begin -->
+
+    <!-- ###CONTENT### begin 
+         This is the part of the template substituted with the gallery menu items
+    -->
+       <!-- ###GALLERY### begin
+            Template for a single item
+       -->
+       ###TITLE###
+       <!-- ###GALLERY### end -->
+    <!-- ###CONTENT### end -->
+    
+
+<!-- ###TEMPLATE_MENU### end -->
+	
+</body>
+</html>

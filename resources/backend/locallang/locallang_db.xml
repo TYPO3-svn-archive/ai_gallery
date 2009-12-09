@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ai_gallery'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Galleries</label>
+			<label index="tx_aigallery_galleries">Gallery</label>
+			<label index="tx_aigallery_galleries.title">Titel</label>
+			<label index="tx_aigallery_galleries.description">Description</label>
+			<label index="tx_aigallery_galleries.images">Images</label>
+			<label index="tx_aigallery_galleries.alt_attributes">Alt Attributes</label>
+			<label index="tx_aigallery_galleries.title_attributes">Title Attributes</label>
+			<label index="tx_aigallery_galleries.image_descriptions">Image Descriptions</label>
+			<label index="tx_aigallery_galleries.max_images.I.0">default</label>
+			<label index="tx_aigallery_galleries.max_images.I.1">all</label>
+			<label index="tx_aigallery_galleries.max_images.I.2">10</label>
+			<label index="tx_aigallery_galleries.max_images.I.3">20</label>
+			<label index="tx_aigallery_galleries.max_images.I.4">30</label>
+			<label index="tx_aigallery_galleries.max_images.I.5">40</label>
+			<label index="tx_aigallery_galleries.max_images">Max. Images per Page</label>
+			<!-- Flexforms for pi1 -->
+			<label index="tt_content.pi_flexform.sheet_general">General</label>
+			<label index="tt_content.pi_flexform.sheet_general.startingpoint">Gallery-SysFolder</label>
+			<label index="tt_content.pi_flexform.sheet_general.code">Code</label>
+			<label index="tt_content.pi_flexform.sheet_general.code.list">List</label>
+			<label index="tt_content.pi_flexform.sheet_general.code.latest">Latest</label>
+			<label index="tt_content.pi_flexform.sheet_general.code.single">Single</label>
+			<label index="tt_content.pi_flexform.sheet_general.code.menu">Menu</label>
+			<label index="tt_content.pi_flexform.sheet_general.orderby">Order By (LIST, LATEST)</label>
+            <label index="tt_content.pi_flexform.sheet_general.orderby.date">Date</label>
+            <label index="tt_content.pi_flexform.sheet_general.orderby.title">Title</label>
+			<label index="tt_content.pi_flexform.sheet_general.sort">Direction (LIST, LATEST)</label>
+            <label index="tt_content.pi_flexform.sheet_general.sort.asc">ASCENDING</label>
+            <label index="tt_content.pi_flexform.sheet_general.sort.desc">DESCENDING</label>
+			<label index="tt_content.pi_flexform.sheet_general.gallery">Gallery to display</label>
+			<label index="tt_content.pi_flexform.sheet_template">Template</label>
+			<label index="tt_content.pi_flexform.sheet_template.templateFile">Template File</label>
+		</languageKey>
+	</data>
+</T3locallang>

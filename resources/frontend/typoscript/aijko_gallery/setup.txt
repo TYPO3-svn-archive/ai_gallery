@@ -1,0 +1,635 @@
+
+# include library for gallery processing
+includeLibs.tx_aigallery_lib = EXT:ai_gallery/classes/class.tx_aigallery_lib.php
+
+
+# Plugin "Gallery"
+plugin.tx_aigallery_pi1 {
+  
+  # Template File to use - overridden by flexforms.
+  templateFile = {$plugin.tx_aigallery_pi1.templateFile}
+  
+  # Starting point by TS
+  galleryPid = {$plugin.tx_aigallery_pi1.galleryPid}
+  
+  # pid for SINGLE view
+  singlePid = {$plugin.tx_aigallery_pi1.singlePid}
+  
+  # Fields we want to skip
+  noMarkerFields = {$plugin.tx_aigallery_pi1.noMarkerFields}
+    
+  # Language Prefix
+  llPrefix = {$plugin.tx_aigallery_pi1.llPrefix}
+  
+  # Fields to read from DB for all views
+  repositoryFields = {$plugin.tx_aigallery_pi1.repositoryFields}
+  
+  # Verifies the integrity of the repository fields - might require admin rights on the DB
+  verifyRepositoryFields = {$plugin.tx_aigallery_pi1.verifyRepositoryFields}
+  
+  # Gallery Selector
+  temp_gallerySelector = CONTENT
+  temp_gallerySelector {
+    table = {$plugin.tx_aigallery_pi1.galleryTable}
+    select {
+      selectFields = uid,{$plugin.tx_aigallery_pi1.titleField}
+      pidInList = {$plugin.tx_aigallery_pi1.galleryPid}
+      orderBy = {$plugin.tx_aigallery_pi1.titleField}
+    }
+    renderObj = COA
+    renderObj {
+      10 = TEXT
+      10 {
+        
+        # Make option
+        dataWrap ( 
+          <option value="|">
+            {field: {$plugin.tx_aigallery_pi1.titleField}}
+          </option>
+        )
+        
+        # option value is a link to the gallery
+        stdWrap {
+       
+          # Link to gallery
+          typolink {
+            parameter = {$plugin.tx_aigallery_pi1.singlePid}
+            title.field = {$plugin.tx_aigallery_pi1.titleField}
+            returnLast = url
+            additionalParams {
+              wrap = &tx_aigallery_pi1[gallery]=|
+              field = uid
+            }
+            useCacheHash = 1
+          }
+        }
+      }
+    }
+    
+    # Wrap the options in a <select> box
+    wrap ( 
+      <div class="gallery-selector">
+      <span class="tiny-notice">Gehe zu Galerie:</span>
+      <select onchange="if(this.value) location.href = this.value">
+        <option></option>|
+      </select>
+      </div>
+    )
+  }
+    
+  # List View
+  listView {
+    
+    # stdWrap - applied to the whole gallery list
+    galleryWrap {
+      wrap = <ol class="vlist gallerylist">|</ol>
+    }
+    
+    # stdWrap - applied to every row
+    rowWrap {
+        wrap = <li>|</li>
+    }
+    
+    # Typolink code used to link to the current gallery in the list view
+    # Used by the fields
+    typolinkToCurrent {
+      parameter = {$plugin.tx_aigallery_pi1.singlePid}
+      title.field = {$plugin.tx_aigallery_pi1.titleField}
+      useCacheHash = 1
+      additionalParams {
+        wrap = &tx_aigallery_pi1[gallery]=|
+        field = uid
+      }
+    }
+    
+    # Fields for each gallery
+    fields {
+      # Teaserimage
+      teaserimage = IMAGE
+      teaserimage {
+      
+        file {
+          maxW = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.maxW}
+          minW = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.minW}
+          maxH = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.maxH}
+          minH = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.minH}
+          
+          # Uploads folder:
+          import = {$plugin.tx_aigallery_pi1.uploadsPath}
+          import.field = {$plugin.tx_aigallery_pi1.imageField}
+          import.listNum = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.listNum}
+        }
+        
+        # Configuration for the alt-Attribute
+        altText {
+          listNum = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.listNum}
+          listNum.splitChar = {$plugin.tx_aigallery_pi1.splitChar}
+          field = {$plugin.tx_aigallery_pi1.imgAltField}
+        }
+        
+        #Configuration for the title-Attribute
+        titleText {
+          listNum = {$plugin.tx_aigallery_pi1.fields.listView.teaserimage.listNum}
+          listNum.splitChar = {$plugin.tx_aigallery_pi1.splitChar}
+          field = {$plugin.tx_aigallery_pi1.imgTitleField}
+        }
+        
+        # Link to the current gallery
+        stdWrap.typolink < plugin.tx_aigallery_pi1.listView.typolinkToCurrent
+        stdWrap.typolink.ATagParams = class="list-image"
+      }
+      
+      # Title
+      title = TEXT
+      title {
+        field = {$plugin.tx_aigallery_pi1.titleField}
+        typolink < plugin.tx_aigallery_pi1.listView.typolinkToCurrent
+        typolink.ATagParams = class="list-link"
+        
+        wrap = <h2>|</h2>
+      }
+      
+      # Description
+      description = TEXT
+      description {
+        field = {$plugin.tx_aigallery_pi1.descriptionField}
+        wrap = <p>|</p>
+      }
+      
+      # Link to detail page
+      more = TEXT
+      more {
+        value = ###LANG_MORE###
+        typolink < plugin.tx_aigallery_pi1.listView.typolinkToCurrent
+      }
+      
+      count = USER
+      count {
+        userFunc = tx_aigallery_lib->tsCountImages
+        imageField = {$plugin.tx_aigallery_pi1.imageField}
+        stdWrap {
+          noTrimWrap = |<div class="imageCountText">| ###LANG_IMAGECOUNT###</div>|
+        }
+      }
+    }
+    
+    # CONTENT markers - base for this is the LAST record
+    content {
+      
+      # Gallery count
+      gallery_count = TEXT
+      gallery_count {
+        numRows.table = {$plugin.tx_aigallery_pi1.galleryTable}
+        numRows.select {
+          pidInList = {$plugin.tx_aigallery_pi1.galleryPid}
+        }
+        noTrimWrap = |<p>Bilderalben (| gesamt)</p>|
+      }
+      
+      # Gallery Selector
+      gallery_selector  < plugin.tx_aigallery_pi1.temp_gallerySelector
+      gallery_selector.wrap ( 
+        <div class="gallery-selector gallery-selector-right">
+        <span class="tiny-notice">Gehe zu Galerie:</span>
+        <select onchange="if(this.value) location.href = this.value">
+          <option></option>|
+        </select>
+        </div>
+      )
+      
+    }
+    
+    # Extended by the default fields
+    # content < plugin.tx_aigallery_pi1.content
+    
+  }
+  
+  # List View
+  latestView {
+    
+    # stdWrap - applied to the whole gallery list
+    galleryWrap {
+      
+    }
+    
+    # stdWrap - applied to every row
+    rowWrap {
+        
+    }
+    
+    # Typolink code used to link to the current gallery in the list view
+    # Used by the fields
+    typolinkToCurrent {
+      parameter = {$plugin.tx_aigallery_pi1.singlePid}
+      title.field = {$plugin.tx_aigallery_pi1.titleField}
+      useCacheHash = 1
+      additionalParams {
+        wrap = &tx_aigallery_pi1[gallery]=|
+        field = uid
+      }
+    }
+    
+    # Fields for each gallery
+    fields {
+      # Teaserimage
+      # Images
+      images = COA
+      images {
+        10 = TEXT
+        10 {
+          field = {$plugin.tx_aigallery_pi1.imageField}
+          
+          # Wrap in list
+          wrap = <ul class="flatlist tease-galleries mth">|</ul>
+          
+          # Split every image for separate processing
+          split {
+            token = ,
+            max = 8
+            cObjNum = 1
+            1 {
+            
+                # Wrap the whole output
+                wrap = <li>|</li>
+                
+                # Image
+                10 = IMAGE
+                10 {
+                    
+                    # file
+                    file {
+                       import = {$plugin.tx_aigallery_pi1.uploadsPath}
+                       import.current = 1
+                       width = {$plugin.tx_aigallery_pi1.fields.singleView.images.width}
+                       height = {$plugin.tx_aigallery_pi1.fields.singleView.images.height}
+                    }
+                    
+                    # Link to single view
+                    stdWrap.typolink < plugin.tx_aigallery_pi1.latestView.typolinkToCurrent
+                    
+                    # Get current alt text
+                    altText {
+                      field = {$plugin.tx_aigallery_pi1.imgAltField}
+                      split.token.char = {$plugin.tx_aigallery_pi1.splitChar}
+                      split.returnKey.data = register : SPLIT_COUNT
+                    }
+                    
+                    # Get current title text
+                    titleText {
+                      field = {$plugin.tx_aigallery_pi1.imgTitleField}
+                      split.token.char = {$plugin.tx_aigallery_pi1.splitChar}
+                      split.returnKey.data = register : SPLIT_COUNT
+                    }
+                }
+            }
+          }
+        }
+      }
+      
+      # Link to detail page
+      more = TEXT
+      more {
+        value = ###LANG_TOGALLERY###
+        typolink < plugin.tx_aigallery_pi1.latestView.typolinkToCurrent
+        typolink {
+          ATagParams = class="arrow arrow-white ly-bottom-more"
+        }
+      }
+    }
+    
+    # CONTENT markers - base for this is the LAST record
+    content {
+      heading = TEXT
+      heading {
+        value = ###LANG_HEADING###
+        wrap = <h2>|</h2>
+      }
+    }
+    
+  }
+    
+  # Single View
+  singleView {
+  
+    # Typolink code used to link to the current gallery in the list view
+    # Used by the fields
+    typolinkToCurrent < plugin.tx_aigallery_pi1.listView.typolinkToCurrent
+  
+    # Fields
+    fields {
+      
+      # Load the current uid into a register
+      register = LOAD_REGISTER
+      register {
+        tx_aigallery_currentGallery.field = uid
+      }
+      
+      # Title
+      title = TEXT
+      title {
+        field = {$plugin.tx_aigallery_pi1.titleField}
+        wrap = <h1 class="gallery-heading">|</h1>
+      }
+      
+      # Description
+      description = TEXT
+      description {
+        field = {$plugin.tx_aigallery_pi1.descriptionField}
+      }
+    
+      # Images
+      images = COA
+      images {
+        10 = TEXT
+        10 {
+          field = {$plugin.tx_aigallery_pi1.imageField}
+          
+          # Wrap in list
+          wrap = <div class="gallery"><ul>|</ul></div>
+          
+          # Split every image for separate processing
+          split {
+            token = ,
+            cObjNum = 1
+            1 {
+            
+                # Wrap the whole output
+                wrap = <li>|</li>
+                
+                # Enable pagination with this ".if"
+                if {
+                  value.data = register : SPLIT_COUNT
+                  isLessThan.data = register : TX_START_EXCLUSIVE
+                  isGreaterThan.data = register : TX_END_EXCLUSIVE
+                }
+                
+                # Image
+                10 = IMAGE
+                10 {
+                    
+                    # file
+                    file {
+                       import = {$plugin.tx_aigallery_pi1.uploadsPath}
+                       import.current = 1
+                       width = {$plugin.tx_aigallery_pi1.fields.singleView.images.width}
+                       height = {$plugin.tx_aigallery_pi1.fields.singleView.images.height}
+                    }
+                    
+                    # Link with lightbox
+                    stdWrap.typolink {
+                    
+                      # Link to this file in the uploads folder
+                      parameter {
+                        cObject = IMG_RESOURCE
+                        cObject {
+                          file.import.data = TSFE:lastImageInfo|origFile
+                          file.maxW = {$plugin.perfectlightbox.lightBoxMaxW}
+                          file.maxH = {$plugin.perfectlightbox.lightBoxMaxH}   
+                        }     
+                      }
+                      
+                      # Make it a imageset lightbox
+                      ATagParams = rel="lightbox[lb]"
+                    }
+                    
+                    # Get current alt text
+                    altText {
+                      field = {$plugin.tx_aigallery_pi1.imgAltField}
+                      split.token.char = {$plugin.tx_aigallery_pi1.splitChar}
+                      split.returnKey.data = register : SPLIT_COUNT
+                    }
+                    
+                    # Get current title text
+                    titleText {
+                      field = {$plugin.tx_aigallery_pi1.imgTitleField}
+                      split.token.char = {$plugin.tx_aigallery_pi1.splitChar}
+                      split.returnKey.data = register : SPLIT_COUNT
+                    }
+                }
+                
+                # Image description
+                20 = TEXT
+                20 {
+                  field = {$plugin.tx_aigallery_pi1.imgDescriptionField}
+                  split.token.char = {$plugin.tx_aigallery_pi1.splitChar}
+                  split.returnKey.data = register : SPLIT_COUNT
+                  wrap = <p>|</p>
+                  
+                  # Make sure we only output if there is a value
+                  # Otherwise, wrap will be applied without it
+                  if {
+                    value {
+                      field = {$plugin.tx_aigallery_pi1.imgDescriptionField}
+                      split.token.char = {$plugin.tx_aigallery_pi1.splitChar}
+                      split.returnKey.data = register : SPLIT_COUNT
+                    }
+                    negate = 1
+                    equals.value = 
+                  }
+                }
+            }
+          }
+        }
+      }
+    }
+    
+    # CONTENT markers - base is the current gallery
+    content {
+      
+      # Gallery Selector
+      gallery_selector < plugin.tx_aigallery_pi1.temp_gallerySelector
+      gallery_selector.renderObj {
+        
+        # Give unselected items
+        10.if {
+          value.field = uid
+          equals.data = register:tx_aigallery_currentGallery
+          negate = 1
+        }
+        
+        # Select the current item
+        20 = TEXT
+        20 {
+        
+          # Make option
+          dataWrap ( 
+            <option selected="selected">
+              {field: {$plugin.tx_aigallery_pi1.titleField}}
+            </option>
+          )
+        
+          if {
+            value.field = uid
+            equals.data = register:tx_aigallery_currentGallery
+          }
+        }
+      }
+      
+      # Pagination
+      paging = USER
+      paging {
+        
+        # Call our library function
+        userFunc = tx_aigallery_lib->tsPaginator
+        
+        # Paging Length
+        pagingLength = {$plugin.tx_aigallery_pi1.defaults.pagingLength}
+        
+        # Image Field
+        imageField = {$plugin.tx_aigallery_pi1.imageField}
+        
+        # Configuration
+        pages {
+          
+          # Standard Wrap
+          stdWrap { 
+            wrap = <div class="paginate"><ol>|</ol></div>
+          }
+          
+          # Normal Page - treat as stdWrap!
+          NO_stdWrap {
+            wrap = <li>|</li>
+            
+            # Add link to that page.
+            typolink < plugin.tx_aigallery_pi1.singleView.typolinkToCurrent
+            typolink {
+              additionalParams {
+                dataWrap = |&tx_aigallery_pi1[page]={register:TX_AIGALLERY_PAGE}
+              }
+            }
+          }
+          
+          # Current Page - treat as stdWrap!
+          CUR_stdWrap {
+            noTrimWrap = |<li class="current">- | -</li>|
+          }
+        }
+        
+      }
+      
+      # Gallery Navigation
+      gallery_navigation = USER
+      gallery_navigation {
+        
+        # Call our library function
+        userFunc = tx_aigallery_lib->tsGalleryNavigation
+        
+        repositoryFields = {$plugin.tx_aigallery_pi1.repositoryFields}
+        
+        # List of Items we want to render
+        render {
+        
+          # Mapping of previous and next items
+          # These will have those rows as basis
+          prev = 10
+          next = 20
+        
+          # Previous
+          10 = TEXT
+          10 {
+            
+            # Get the value.
+            value ( 
+              <img src="clear.gif" title="Vorheriges Album" alt="Vorheriges Album" class="gallery-prev" />
+              {field: {$plugin.tx_aigallery_pi1.titleField}}
+            )
+            insertData = 1
+          
+            # Apply standard wrap features.
+            wrap (
+              <span class="album-nav-prev">Vorheriges Album</span>|
+            )
+          
+            outerWrap (
+              <li class="album-nav previous"><div class="album-nav-desc">|</div></li>
+            )
+            
+            # Make typolink
+            typolink < plugin.tx_aigallery_pi1.singleView.typolinkToCurrent
+          }
+        
+          # Next
+          20 = TEXT
+          20 {
+        
+            # Get the value.
+            value ( 
+              <img src="clear.gif" title="Nächstes Album" alt="Nächstes Album" class="gallery-next" />
+              {field: {$plugin.tx_aigallery_pi1.titleField}}
+            )
+            insertData = 1
+            
+            # Apply standard wrap features.
+            wrap (
+              <span class="album-nav-next">Nächstes Album</span>|
+            )
+          
+            outerWrap (
+              <li class="album-nav next"><div class="album-nav-desc">|</div></li>
+            )
+            
+            # Make typolink
+            typolink < plugin.tx_aigallery_pi1.singleView.typolinkToCurrent
+          }
+        }
+        
+        # stdWrap that will be applied to the gallery_navigation
+        stdWrap {
+          wrap = <div class="gallery-directions"><ol class="flatlist browse">|</ol></div>
+        }
+      }
+    }
+  }
+  
+  # Menu View
+  menuView {
+    
+    # stdWrap - applied to the whole gallery list
+    galleryWrap {
+      wrap = <ol>|</ol>
+    }
+    
+    # stdWrap - applied to every row
+    rowWrap {
+        wrap = <li>|</li>
+    }
+    
+    # Typolink code used to link to the current gallery in the list view
+    # Used by the fields
+    typolinkToCurrent {
+      parameter.data = GP:id
+      title.field = {$plugin.tx_aigallery_pi1.titleField}
+      useCacheHash = 1
+      additionalParams {
+        wrap = &tx_aigallery_pi1[gallery]=|
+        field = uid
+      }
+    }
+    
+    # Fields for each gallery
+    fields {
+      
+      # Title
+      title = TEXT
+      title {
+        field = {$plugin.tx_aigallery_pi1.titleField}
+        typolink < plugin.tx_aigallery_pi1.listView.typolinkToCurrent
+        typolink {
+          parameter >
+          parameter = {$plugin.tx_aigallery_pi1.singlePid}
+        }
+      }
+    }
+    
+  }
+  
+  # Default values normally set in gallery records themselves
+  defaults {
+  
+    # Default paging starting
+    pagingStart = {$plugin.tx_aigallery_pi1.defaults.pagingStart}
+    
+    # Default paging length
+    pagingLength = {$plugin.tx_aigallery_pi1.defaults.pagingLength}
+  }
+}
