@@ -1,0 +1,2 @@
+# cat=basic/enable; type=boolean; label=Add gallery realUrl configuration?
+realUrl =

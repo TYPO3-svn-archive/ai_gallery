@@ -1,0 +1,104 @@
+a:2:{s:4:"meta";a:3:{s:5:"title";s:12:"tx_aigallery";s:5:"descr";s:0:"";s:7:"options";a:2:{s:10:"usageCount";N;s:19:"includeCodeAbstract";N;}}s:5:"files";a:4:{s:14:"MD5_d1fc72f72e";a:4:{s:8:"filename";s:34:"classes/class.tx_aigallery_lib.php";s:8:"filesize";i:8438;s:6:"header";a:5:{s:4:"text";s:37:"
+
+Library functions for 'ai_gallery'
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package TYPO3";i:2;s:22:"@subpackage ai_gallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:11:"ai_gallery ";}}}s:3:"DAT";a:5:{i:1;a:8:{s:6:"header";s:24:"class tx_aigallery_lib {";s:5:"class";i:1;s:11:"parentClass";s:16:"tx_aigallery_lib";s:4:"cDat";a:5:{s:4:"text";s:37:"
+
+Library functions for 'ai_gallery'
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package TYPO3";i:2;s:22:"@subpackage ai_gallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:11:"ai_gallery ";}}}s:7:"content";s:0:"";s:12:"content_size";i:291;s:13:"content_lines";i:18;s:6:"atLine";i:45;}i:3;a:7:{s:6:"header";s:42:"function tsCountImages($content, $conf)
+	{";s:11:"parentClass";s:16:"tx_aigallery_lib";s:4:"cDat";a:3:{s:4:"text";s:42:"
+
+Used to count the images via Typoscript
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:80:"$content The current value - empty most of the time, and irrelevant in this case";}i:1;a:2:{i:0;s:5:"array";i:1;s:37:"$conf TS Configuration for this field";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:527;s:13:"content_lines";i:22;s:6:"atLine";i:71;}i:5;a:7:{s:6:"header";s:48:"function tsGalleryNavigation($content, $conf)
+	{";s:11:"parentClass";s:16:"tx_aigallery_lib";s:4:"cDat";a:3:{s:4:"text";s:43:"
+
+Used to print out the gallery navigation
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:26:"$content The current value";}i:1;a:2:{i:0;s:5:"array";i:1;s:37:"$conf TS Configuration for this field";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:2761;s:13:"content_lines";i:106;s:6:"atLine";i:102;}i:7;a:4:{s:6:"header";s:40:"function tsPaginator($content, $conf)
+	{";s:11:"parentClass";s:16:"tx_aigallery_lib";s:4:"cDat";a:3:{s:4:"text";s:34:"
+
+Used to print out the paginator
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:26:"$content The current value";}i:1;a:2:{i:0;s:5:"array";i:1;s:37:"$conf TS Configuration for this field";}}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:0:"";}}s:6:"atLine";i:217;}i:9;a:7:{s:6:"header";s:43:"protected function initializeRepository() {";s:11:"parentClass";s:16:"tx_aigallery_lib";s:4:"cDat";a:3:{s:4:"text";s:43:"
+
+Initializes the repository for galleries
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:485;s:13:"content_lines";i:14;s:6:"atLine";i:302;}}}s:14:"MD5_eb83cceaf8";a:4:{s:8:"filename";s:51:"classes/Repository/class.tx_aigallery_galleries.php";s:8:"filesize";i:1633;s:6:"header";a:5:{s:4:"text";s:57:"
+
+Repository for all galleries handled by this extension
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package TYPO3";i:2;s:24:"@subpackage tx_aigallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:13:"tx_aigallery ";}}}s:3:"DAT";a:1:{i:1;a:8:{s:6:"header";s:62:"class tx_aigallery_galleries extends tx_aigallery_repository {";s:5:"class";i:1;s:11:"parentClass";s:22:"tx_aigallery_galleries";s:4:"cDat";a:5:{s:4:"text";s:57:"
+
+Repository for all galleries handled by this extension
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package TYPO3";i:2;s:24:"@subpackage tx_aigallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:13:"tx_aigallery ";}}}s:7:"content";s:0:"";s:12:"content_size";i:372;s:13:"content_lines";i:15;s:6:"atLine";i:32;}}}s:14:"MD5_4281ad949d";a:4:{s:8:"filename";s:52:"classes/Repository/class.tx_aigallery_repository.php";s:8:"filesize";i:5556;s:6:"header";a:5:{s:4:"text";s:23:"
+
+Repository blueprint
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package TYPO3";i:2;s:24:"@subpackage tx_aigallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:13:"tx_aigallery ";}}}s:3:"DAT";a:12:{i:1;a:8:{s:6:"header";s:31:"class tx_aigallery_repository {";s:5:"class";i:1;s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:5:{s:4:"text";s:23:"
+
+Repository blueprint
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package TYPO3";i:2;s:24:"@subpackage tx_aigallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:13:"tx_aigallery ";}}}s:7:"content";s:0:"";s:12:"content_size";i:776;s:13:"content_lines";i:65;s:6:"atLine";i:52;}i:3;a:7:{s:6:"header";s:42:"public function initialize(object $cObj) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:29:"
+
+Initializes the repository
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:10:"tslib_cObj";i:1;s:23:"$cObj cObject of plugin";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:89;s:13:"content_lines";i:6;s:6:"atLine";i:124;}i:5;a:7:{s:6:"header";s:24:"public function load() {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:61:"
+
+Loads all records from the galleries table and stores them
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:363;s:13:"content_lines";i:8;s:6:"atLine";i:136;}i:7;a:7:{s:6:"header";s:27:"public function getRows() {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:47:"
+
+Returns all records that were loaded as rows
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:5:"array";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:180;s:13:"content_lines";i:12;s:6:"atLine";i:150;}i:9;a:7:{s:6:"header";s:35:"public function isValidResource() {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:35:"
+
+Returns if the resource is valid
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:7:"boolean";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:36;s:13:"content_lines";i:3;s:6:"atLine";i:168;}i:11;a:7:{s:6:"header";s:34:"public function setWhere($where) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:24:"
+
+Sets the where clause
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:6:"string";i:1;s:19:"$where WHERE-Clause";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:30;s:13:"content_lines";i:3;s:6:"atLine";i:178;}i:13;a:7:{s:6:"header";s:36:"public function setOrderBy($order) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:27:"
+
+Sets the order-by clause
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:6:"string";i:1;s:22:"$order Order-By-Clause";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:41;s:13:"content_lines";i:3;s:6:"atLine";i:188;}i:15;a:7:{s:6:"header";s:47:"public function setOrderDirection($direction) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:30:"
+
+Sets the order-by direction
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:6:"string";i:1;s:29:"$direction Order-By Direction";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:45;s:13:"content_lines";i:3;s:6:"atLine";i:198;}i:17;a:7:{s:6:"header";s:34:"public function setLimit($limit) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:24:"
+
+Sets the limit clause
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:6:"string";i:1;s:19:"$limit LIMIT-Clause";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:39;s:13:"content_lines";i:3;s:6:"atLine";i:208;}i:19;a:7:{s:6:"header";s:36:"public function setFields($fields) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:26:"
+
+Sets the fields to read
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:6:"string";i:1;s:38:"$fields comma-separated list of fields";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:32;s:13:"content_lines";i:3;s:6:"atLine";i:218;}i:21;a:4:{s:6:"header";s:28:"public function getTable() {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:39:"
+
+Returns the table of this repository
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:0:"";}}s:6:"atLine";i:227;}i:23;a:7:{s:6:"header";s:39:"public function verifyFields($fields) {";s:11:"parentClass";s:23:"tx_aigallery_repository";s:4:"cDat";a:3:{s:4:"text";s:68:"
+
+Verifies if a given set of fields actually exist in a given table
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:6:"string";i:1;s:46:"$fields comma-separated fields to test against";}}s:6:"return";a:2:{i:0;s:7:"boolean";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:579;s:13:"content_lines";i:19;s:6:"atLine";i:237;}}}s:14:"MD5_462f07c916";a:4:{s:8:"filename";s:30:"pi1/class.tx_aigallery_pi1.php";s:8:"filesize";i:24059;s:6:"header";a:5:{s:4:"text";s:53:"
+
+Plugin 'Galleries' for the 'ai_gallery' extension.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package	TYPO3";i:2;s:24:"@subpackage tx_aigallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:13:"tx_aigallery ";}}}s:3:"DAT";a:11:{i:1;a:8:{s:6:"header";s:45:"class tx_aigallery_pi1 extends tslib_pibase {";s:5:"class";i:1;s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:5:{s:4:"text";s:53:"
+
+Plugin 'Galleries' for the 'ai_gallery' extension.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"[type]";i:1;s:3:"...";}s:5:"other";a:3:{i:0;s:34:"@author aijko GmbH <info@aijko.de>";i:1;s:14:"@package	TYPO3";i:2;s:24:"@subpackage tx_aigallery";}s:11:"other_index";a:3:{s:7:"@author";a:1:{i:0;s:26:"aijko GmbH <info@aijko.de>";}s:8:"@package";a:1:{i:0;s:6:"TYPO3 ";}s:11:"@subpackage";a:1:{i:0;s:13:"tx_aigallery ";}}}s:7:"content";s:0:"";s:12:"content_size";i:1264;s:13:"content_lines";i:55;s:6:"atLine";i:54;}i:3;a:7:{s:6:"header";s:32:"function main($content, $conf) {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:32:"
+
+The main method of the PlugIn
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:6:"string";i:1;s:28:"$content: The PlugIn content";}i:1;a:2:{i:0;s:5:"array";i:1;s:31:"$conf: The PlugIn configuration";}}s:6:"return";a:2:{i:0;s:3:"The";i:1;s:40:"content that is displayed on the website";}}s:7:"content";s:0:"";s:12:"content_size";i:801;s:13:"content_lines";i:43;s:6:"atLine";i:117;}i:5;a:7:{s:6:"header";s:38:"protected function initialize($conf) {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:25:"
+
+Initializes the Plugin
+";s:5:"param";a:1:{i:0;a:2:{i:0;s:5:"array";i:1;s:30:"$conf Typoscript configuration";}}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:2193;s:13:"content_lines";i:64;s:6:"atLine";i:167;}i:7;a:7:{s:6:"header";s:34:"protected function displayList() {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:35:"
+
+Displays a list of all galleries
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:9:"HTML Code";}}s:7:"content";s:0:"";s:12:"content_size";i:2401;s:13:"content_lines";i:70;s:6:"atLine";i:237;}i:9;a:7:{s:6:"header";s:36:"protected function displayLatest() {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:52:"
+
+Displays the latest gallery in a form of overview
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:2678;s:13:"content_lines";i:71;s:6:"atLine";i:313;}i:11;a:7:{s:6:"header";s:36:"protected function displaySingle() {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:28:"
+
+Displays a single gallery
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:9:"HTML Code";}}s:7:"content";s:0:"";s:12:"content_size";i:3360;s:13:"content_lines";i:96;s:6:"atLine";i:390;}i:13;a:7:{s:6:"header";s:34:"protected function displayMenu() {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:28:"
+
+Displays the gallery menu
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:6:"string";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:2676;s:13:"content_lines";i:70;s:6:"atLine";i:492;}i:15;a:7:{s:6:"header";s:70:"protected function getItemMarkerArray($row, $section = 'singleView') {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:41:"
+
+Generates the marker array of a rowset
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:5:"array";i:1;s:16:"$row Row from DB";}i:1;a:2:{i:0;s:6:"string";i:1;s:60:"$section Which section in the "fields." array we want to use";}}s:6:"return";a:2:{i:0;s:5:"array";i:1;s:12:"Marker Array";}}s:7:"content";s:0:"";s:12:"content_size";i:358;s:13:"content_lines";i:14;s:6:"atLine";i:570;}i:17;a:7:{s:6:"header";s:53:"protected function makeMarkerArray($row, $tsFields) {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:45:"
+
+Makes a marker array from local ts and row
+";s:5:"param";a:2:{i:0;a:2:{i:0;s:5:"array";i:1;s:11:"$row DB Row";}i:1;a:2:{i:0;s:5:"array";i:1;s:38:"$tsFields Typoscript field definitions";}}s:6:"return";a:2:{i:0;s:5:"array";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:692;s:13:"content_lines";i:25;s:6:"atLine";i:592;}i:19;a:4:{s:6:"header";s:42:"protected function makeLanguageMarkers() {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:56:"
+
+Makes a marker array from all fields in the locallang
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:5:"array";i:1;s:0:"";}}s:6:"atLine";i:623;}i:21;a:7:{s:6:"header";s:41:"protected function parseConfiguration() {";s:11:"parentClass";s:16:"tx_aigallery_pi1";s:4:"cDat";a:3:{s:4:"text";s:81:"
+
+Parses the merged configuration of flexforms and TS Config
+Validates the data.
+";s:5:"param";a:0:{}s:6:"return";a:2:{i:0;s:4:"void";i:1;s:0:"";}}s:7:"content";s:0:"";s:12:"content_size";i:3461;s:13:"content_lines";i:128;s:6:"atLine";i:649;}}}}}

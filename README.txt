@@ -1,0 +1,1 @@
+For any information regarding this extension please visit http://www.aijko.de/
