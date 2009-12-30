@@ -123,7 +123,7 @@ class tx_aigallery_repository {
 	 * @param tslib_cObj $cObj cObject of plugin
 	 * @return void
 	 */
-	public function initialize(object $cObj) {
+	public function initialize($cObj) {
 
 		// Get enable fields
 		$this->enableFields = $cObj->enableFields($this->table);
@@ -136,6 +136,9 @@ class tx_aigallery_repository {
 	 * @return void
 	 */
 	public function load() {
+
+        // Hook: before load
+        $this->hook_beforeLoad();
 
 		// Load records
 		$this->res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($this->fields, $this->table, '1=1' . $this->enableFields . $this->where, '', trim($this->orderBy . ' ' . $this->orderByDirection), $this->limit);
@@ -158,6 +161,9 @@ class tx_aigallery_repository {
 			    $rows[] = $row;
 		    }
 		}
+		
+		// Hook: after getRows
+        $this->hook_afterGetRows($rows);
 
 		return $rows;
 	}
@@ -248,6 +254,25 @@ class tx_aigallery_repository {
 		$diff = array_diff($testFields, $tableFields);
 
 		return (0 == count($diff));
+	}
+	
+	/**
+	 * Method stub - can be used by extending repositories
+	 * 
+	 * @return void 
+	 */
+	protected function hook_beforeLoad() {
+		
+	}
+	
+	/**
+	 * Method stub - can be used by extending repositories
+	 * 
+	 * @param array $rows Rows that were loaded
+	 * @return void 
+	 */
+	protected function hook_afterGetRows(&$rows) {
+		
 	}
 }
 

@@ -43,7 +43,7 @@ plugin.tx_aigallery_pi1 {
   descriptionField = description
   
   #cat=aigallery; type=string; label= DB Fields to read from the table:
-  repositoryFields = uid,pid,title,description, images, alt_attributes, title_attributes,image_descriptions
+  repositoryFields = uid,pid,title,description, images, alt_attributes, title_attributes,image_descriptions, live_update, image_folder
   
   #cat=aigallery; type=boolean; label= Test integrity of repository fields:
   verifyRepositoryFields = 1

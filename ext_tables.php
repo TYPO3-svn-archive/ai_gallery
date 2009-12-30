@@ -26,6 +26,7 @@ $TCA['tx_aigallery_galleries'] = array (
 		'cruser_id' => 'cruser_id',
 		'default_sortby' => 'ORDER BY crdate',	
 		'delete' => 'deleted',	
+		'type' => 'CType',
 		'enablecolumns' => array (		
 			'disabled' => 'hidden',	
 			'starttime' => 'starttime',	
@@ -33,9 +34,14 @@ $TCA['tx_aigallery_galleries'] = array (
 			'fe_group' => 'fe_group',
 		),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'resources/backend/tca/tca.php',
+		'dividers2tabs' => 1,
 		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'resources/backend/icons/icon_tx_aigallery_galleries.png',
+		'mainpalette' => '1',
 	),
 );
+
+// CSH
+t3lib_extMgm::addLLrefForTCAdescr('tx_aigallery_galleries','EXT:ai_gallery/resources/backend/locallang/locallang_csh_galleries.xml');
 
 // Add static typoscript.
 t3lib_extMgm::addStaticFile($_EXTKEY, 'resources/frontend/typoscript/aijko_gallery/', 'aijko Gallery');

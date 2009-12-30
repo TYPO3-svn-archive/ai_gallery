@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>CSH language labels for database table tx_aigallery_galleries</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="CType.description">The way you want to specify images</label>
+            <label index="CType.details">Set to "automatic" if you want to load images from a fileadmin folder automatically, or "manual" if you want to select them manually.</label>
+			<label index="title.description">title of the gallery</label>
+			<label index="title.details">The descriptive title of the gallery.</label>
+			<label index="description.description">Short description of the gallery contents.</label>
+			<label index="description.details">Acts like a summary when the user flicks through all your galleries to get an idea what he can expect.</label>
+			<label index="images.description">Manual collection of images you want to display</label>
+            <label index="images.details">Select the images you want to display from the fileadmin manually.</label>
+			<label index="image_folder.description">Load images from folder</label>
+            <label index="image_folder.details">Loads all images inside the fileadmin folder automatically. Useful if you want to display a great amount of images.</label>
+			<label index="live_update.description">Live Update the images from the folder</label>
+            <label index="live_update.details">If set, the output in the frontend will change automatically if you add images to the folder AND clear the cache. If disabled, you have to save the gallery again to enable the images.</label>
+			<label index="alt_attributes.description">alt attributes of the images</label>
+            <label index="alt_attributes.details">alt attributes of the image tags that will be created. Separate with enter.</label>
+			<label index="title_attributes.description">title attributes of the images</label>
+            <label index="title_attributes.details">title attributes of the image tags that will be created. Separate with enter.</label>
+			<label index="image_descriptions.description">Description for images</label>
+            <label index="image_descriptions.details">Short description for each image. Can be displayed in the frontend beneath each image. Separate with enter.</label>
+			<label index="max_images.description">Images to display per page</label>
+            <label index="max_images.details">Determines the paging size of the gallery. Enables you to specify the amount of images per page per gallery, overriding the default that is set in the plugin.</label>
+		</languageKey>
+	</data>
+</T3locallang>

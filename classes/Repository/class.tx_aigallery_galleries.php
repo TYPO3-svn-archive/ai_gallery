@@ -39,7 +39,6 @@ class tx_aigallery_galleries extends tx_aigallery_repository {
      * @var string
      */
     protected $table = 'tx_aigallery_galleries';
-	
 }
 
 

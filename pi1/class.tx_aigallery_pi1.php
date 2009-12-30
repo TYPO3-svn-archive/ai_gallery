@@ -416,7 +416,6 @@ class tx_aigallery_pi1 extends tslib_pibase {
         $this->galleryRepository->setWhere(' AND uid = ' . $gallery);
         $this->galleryRepository->load();
 
-
         // Read subparts
         $template = array();
         $template['single'] = $this->cObj->getSubpart($this->templateCode, '###TEMPLATE_SINGLE###');
@@ -719,8 +718,6 @@ class tx_aigallery_pi1 extends tslib_pibase {
                 $this->validConfiguration = false;
             }
 
-        } else {
-            $this->validConfiguration = false;
         }
 
 		// 7. Template File - template_file = Flexforms, templateFile = TS

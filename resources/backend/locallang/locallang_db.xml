@@ -7,10 +7,18 @@
 	<data type="array">
 		<languageKey index="default" type="array">
 			<label index="tt_content.list_type_pi1">Galleries</label>
+			<label index="tx_aigallery_galleries.tabs.general">General</label>
+			<label index="tx_aigallery_galleries.tabs.manual">Manual</label>
+			<label index="tx_aigallery_galleries.tabs.automatic">Automatic</label>
 			<label index="tx_aigallery_galleries">Gallery</label>
-			<label index="tx_aigallery_galleries.title">Titel</label>
+			<label index="tx_aigallery_galleries.ctype">Image Selection</label>
+			<label index="tx_aigallery_galleries.ctype.I.0">Manual</label>
+			<label index="tx_aigallery_galleries.ctype.I.1">Automatic</label>
+			<label index="tx_aigallery_galleries.title">Title</label>
 			<label index="tx_aigallery_galleries.description">Description</label>
 			<label index="tx_aigallery_galleries.images">Images</label>
+			<label index="tx_aigallery_galleries.image_folder">Image Folder</label>
+			<label index="tx_aigallery_galleries.live_update">Live Update</label>
 			<label index="tx_aigallery_galleries.alt_attributes">Alt Attributes</label>
 			<label index="tx_aigallery_galleries.title_attributes">Title Attributes</label>
 			<label index="tx_aigallery_galleries.image_descriptions">Image Descriptions</label>

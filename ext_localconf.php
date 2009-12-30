@@ -37,4 +37,7 @@ if (isset($extConf['realUrl']) && 1 == $extConf['realUrl']) {
     require_once(t3lib_extMgm::extPath($_EXTKEY) . '/resources/frontend/realurl/realurl_conf.php');
 }
 
+// Hooks
+$TYPO3_CONF_VARS['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'EXT:ai_gallery/hooks/class.tx_aigallery_dmhooks.php:tx_aigallery_dmhooks';
+$TYPO3_CONF_VARS['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc'][] = 'EXT:ai_gallery/hooks/class.tx_aigallery_cachehooks.php:tx_aigallery_cachehooks->liveUpdate';
 ?>

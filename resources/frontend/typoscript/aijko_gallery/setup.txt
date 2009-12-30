@@ -1,6 +1,6 @@
 
 # include library for gallery processing
-includeLibs.tx_aigallery_lib = EXT:ai_gallery/classes/class.tx_aigallery_lib.php
+includeLibs.tx_aigallery_tsfunc = EXT:ai_gallery/classes/class.tx_aigallery_tsfunc.php
 
 
 # Plugin "Gallery"
@@ -165,7 +165,7 @@ plugin.tx_aigallery_pi1 {
       
       count = USER
       count {
-        userFunc = tx_aigallery_lib->tsCountImages
+        userFunc = tx_aigallery_tsfunc->tsCountImages
         imageField = {$plugin.tx_aigallery_pi1.imageField}
         stdWrap {
           noTrimWrap = |<div class="imageCountText">| ###LANG_IMAGECOUNT###</div>|
@@ -470,7 +470,7 @@ plugin.tx_aigallery_pi1 {
       paging {
         
         # Call our library function
-        userFunc = tx_aigallery_lib->tsPaginator
+        userFunc = tx_aigallery_tsfunc->tsPaginator
         
         # Paging Length
         pagingLength = {$plugin.tx_aigallery_pi1.defaults.pagingLength}
@@ -512,7 +512,7 @@ plugin.tx_aigallery_pi1 {
       gallery_navigation {
         
         # Call our library function
-        userFunc = tx_aigallery_lib->tsGalleryNavigation
+        userFunc = tx_aigallery_tsfunc->tsGalleryNavigation
         
         repositoryFields = {$plugin.tx_aigallery_pi1.repositoryFields}
         

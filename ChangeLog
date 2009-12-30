@@ -1,3 +1,7 @@
+2009-12-30 aijko GmbH  <info@aijko.de>
+* Added possibility to read gallery from fileadmin
+* Added unit tests for lib
+
 2009-12-09 aijko GmbH  <info@aijko.de>
 * Code uploaded to SVN
 

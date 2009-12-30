@@ -37,49 +37,50 @@
  *
  */
 
+require_once (t3lib_extMgm::extPath('ai_gallery') .'classes/class.tx_aigallery_lib.php');
+
 /**
- * Library functions for 'ai_gallery'
+ * Hooks for datamap processing
  *
  * @author aijko GmbH <info@aijko.de>
  * @package TYPO3
- * @subpackage ai_gallery
+ * @subpackage tx_aigallery
  */
-class tx_aigallery_lib {
-	
+class tx_aigallery_dmhooks	{
+    
 	const TABLE_GALLERIES = 'tx_aigallery_galleries';
 	
 	/**
-	 * Returns a comma separated list of all images in a folder
+	 * Hook to process field array before any values are stripped
 	 * 
-	 * @param string $folder absolute Path to the dir
-	 * @return string
+	 * @param array $incomingFieldArray
+	 * @param string $table
+	 * @param int $id
+	 * @param object $pObj
+	 * @return void
 	 */
-	public static function getImagesInDir($folder) {
+	public function processDatamap_preProcessFieldArray(&$incomingFieldArray, $table, $id, &$pObj)    {
 		
-		$images = '';
-		
-		t3lib_div::loadTCA(self::TABLE_GALLERIES);
-        $allowedExt = $GLOBALS['TCA'][self::TABLE_GALLERIES]['columns']['images']['config']['allowed'];
-        
-        if (t3lib_div::isAbsPath($folder)) {
-            
-            $files = t3lib_div::getFilesInDir($folder, $allowedExt);
-            
-            // Add files to be imported
-            foreach ($files as $file) {
-                $images .= $folder . $file . ',';
-            }
-            
-            $images = substr($images, 0, -1);
-        }
-		
-		return $images;
+		switch (strtolower((string)$table))	{
+			case self::TABLE_GALLERIES:
+
+				// Check if live update is disabled - if so, import all images at once
+				if (isset($incomingFieldArray['live_update']) && 
+				    0 == $incomingFieldArray['live_update'] &&
+					isset($incomingFieldArray['CType']) &&
+					'automatic' == $incomingFieldArray['CType']) {
+					
+					// Read all files in the folder the user specified
+					$folder = PATH_site . $incomingFieldArray['image_folder'];
+						
+					$incomingFieldArray['images'] = tx_aigallery_lib::getImagesInDir($folder);
+				}
+			break;
+		}
 	}
 }
 
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ai_gallery/classes/class.tx_aigallery_lib.php'])   {
-    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ai_gallery/classes/class.tx_aigallery_lib.php']);
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']["ext/ai_gallery/hooks/class.tx_aigallery_dmhooks.php"])	{
+	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']["ext/ai_gallery/hooks/class.tx_aigallery_dmhooks.php"]);
 }
-
 ?>
