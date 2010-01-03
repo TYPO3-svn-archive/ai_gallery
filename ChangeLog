@@ -1,3 +1,9 @@
+2010-01-03 aijko GmbH  <info@aijko.de>
+* Improved unit tests
+* Added new features to documentation
+* Cleanup of extdeveval header
+* Updated API
+
 2009-12-30 aijko GmbH  <info@aijko.de>
 * Added possibility to read gallery from fileadmin
 * Added unit tests for lib

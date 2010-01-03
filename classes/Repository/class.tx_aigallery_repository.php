@@ -26,20 +26,22 @@
  *
  *
  *
- *   54: class tx_aigallery_repository
- *  126:     public function initialize(tslib_cObj $cObj)
- *  138:     public function load()
- *  152:     public function getRows()
- *  170:     public function isValidResource()
- *  180:     public function setWhere($where)
- *  190:     public function setOrderBy($order)
- *  200:     public function setOrderDirection($direction)
- *  210:     public function setLimit($limit)
- *  220:     public function setFields($fields)
- *  229:     public function getTable()
- *  239:     public function verifyFields($fields)
+ *   56: class tx_aigallery_repository
+ *  128:     public function initialize($cObj)
+ *  140:     public function load()
+ *  157:     public function getRows()
+ *  178:     public function isValidResource()
+ *  188:     public function setWhere($where)
+ *  198:     public function setOrderBy($order)
+ *  208:     public function setOrderDirection($direction)
+ *  218:     public function setLimit($limit)
+ *  228:     public function setFields($fields)
+ *  237:     public function getTable()
+ *  247:     public function verifyFields($fields)
+ *  266:     protected function hook_beforeLoad()
+ *  276:     protected function hook_afterGetRows(&$rows)
  *
- * TOTAL FUNCTIONS: 11
+ * TOTAL FUNCTIONS: 13
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -120,7 +122,7 @@ class tx_aigallery_repository {
 	/**
 	 * Initializes the repository
 	 *
-	 * @param tslib_cObj $cObj cObject of plugin
+	 * @param object $cObj cObject of plugin
 	 * @return void
 	 */
 	public function initialize($cObj) {
@@ -142,7 +144,7 @@ class tx_aigallery_repository {
 
 		// Load records
 		$this->res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($this->fields, $this->table, '1=1' . $this->enableFields . $this->where, '', trim($this->orderBy . ' ' . $this->orderByDirection), $this->limit);
-		
+
 		// Check if resource is valid
 		$this->validResource = (is_resource($this->res) && $GLOBALS['TYPO3_DB']->sql_num_rows($this->res) > 0);
 	}
@@ -161,7 +163,7 @@ class tx_aigallery_repository {
 			    $rows[] = $row;
 		    }
 		}
-		
+
 		// Hook: after getRows
         $this->hook_afterGetRows($rows);
 
@@ -239,7 +241,7 @@ class tx_aigallery_repository {
 	/**
 	 * Verifies if a given set of fields actually exist in a given table
 	 *
-	 * @param string $fields comma-separated fields to test against
+	 * @param string	$fields comma-separated fields to test against
 	 * @return boolean
 	 */
 	public function verifyFields($fields) {
@@ -255,24 +257,24 @@ class tx_aigallery_repository {
 
 		return (0 == count($diff));
 	}
-	
+
 	/**
 	 * Method stub - can be used by extending repositories
-	 * 
-	 * @return void 
+	 *
+	 * @return	void
 	 */
 	protected function hook_beforeLoad() {
-		
+
 	}
-	
+
 	/**
 	 * Method stub - can be used by extending repositories
-	 * 
-	 * @param array $rows Rows that were loaded
-	 * @return void 
+	 *
+	 * @param array	$rows Rows that were loaded
+	 * @return void
 	 */
 	protected function hook_afterGetRows(&$rows) {
-		
+
 	}
 }
 

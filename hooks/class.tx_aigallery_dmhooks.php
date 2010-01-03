@@ -26,13 +26,10 @@
  *
  *
  *
- *   47: class tx_aigallery_lib
- *   73:     function tsCountImages($content, $conf)
- *  104:     function tsGalleryNavigation($content, $conf)
- *  219:     function tsPaginator($content, $conf)
- *  304:     protected function initializeRepository()
+ *   46: class tx_aigallery_dmhooks
+ *   59:     public function processDatamap_preProcessFieldArray(&$incomingFieldArray, $table, $id, &$pObj)
  *
- * TOTAL FUNCTIONS: 4
+ * TOTAL FUNCTIONS: 1
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -47,12 +44,12 @@ require_once (t3lib_extMgm::extPath('ai_gallery') .'classes/class.tx_aigallery_l
  * @subpackage tx_aigallery
  */
 class tx_aigallery_dmhooks	{
-    
+
 	const TABLE_GALLERIES = 'tx_aigallery_galleries';
-	
+
 	/**
 	 * Hook to process field array before any values are stripped
-	 * 
+	 *
 	 * @param array $incomingFieldArray
 	 * @param string $table
 	 * @param int $id
@@ -60,19 +57,19 @@ class tx_aigallery_dmhooks	{
 	 * @return void
 	 */
 	public function processDatamap_preProcessFieldArray(&$incomingFieldArray, $table, $id, &$pObj)    {
-		
+
 		switch (strtolower((string)$table))	{
 			case self::TABLE_GALLERIES:
 
 				// Check if live update is disabled - if so, import all images at once
-				if (isset($incomingFieldArray['live_update']) && 
+				if (isset($incomingFieldArray['live_update']) &&
 				    0 == $incomingFieldArray['live_update'] &&
 					isset($incomingFieldArray['CType']) &&
 					'automatic' == $incomingFieldArray['CType']) {
-					
+
 					// Read all files in the folder the user specified
 					$folder = PATH_site . $incomingFieldArray['image_folder'];
-						
+
 					$incomingFieldArray['images'] = tx_aigallery_lib::getImagesInDir($folder);
 				}
 			break;
@@ -80,7 +77,7 @@ class tx_aigallery_dmhooks	{
 	}
 }
 
-if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']["ext/ai_gallery/hooks/class.tx_aigallery_dmhooks.php"])	{
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']["ext/ai_gallery/hooks/class.tx_aigallery_dmhooks.php"]);
+if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/ai_gallery/hooks/class.tx_aigallery_dmhooks.php'])	{
+	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/ai_gallery/hooks/class.tx_aigallery_dmhooks.php']);
 }
 ?>

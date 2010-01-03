@@ -27,16 +27,16 @@
  *
  *
  *   56: class tx_aigallery_pi1 extends tslib_pibase
- *  129:     function main($content, $conf)
- *  183:     protected function initialize($conf)
- *  253:     protected function displayList()
- *  335:     protected function displayLatest()
- *  416:     protected function displaySingle()
- *  523:     protected function displayMenu()
- *  606:     protected function getItemMarkerArray($row, $section = 'singleView')
- *  629:     protected function makeMarkerArray($row, $tsFields)
- *  662:     protected function makeLanguageMarkers()
- *  688:     protected function parseConfiguration()
+ *  119:     function main($content, $conf)
+ *  169:     protected function initialize($conf)
+ *  239:     protected function displayList()
+ *  315:     protected function displayLatest()
+ *  392:     protected function displaySingle()
+ *  493:     protected function displayMenu()
+ *  571:     protected function getItemMarkerArray($row, $section = 'singleView')
+ *  593:     protected function makeMarkerArray($row, $tsFields)
+ *  624:     protected function makeLanguageMarkers()
+ *  650:     protected function parseConfiguration()
  *
  * TOTAL FUNCTIONS: 10
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -100,10 +100,10 @@ class tx_aigallery_pi1 extends tslib_pibase {
      * @var array
      */
     protected $validSort = array('', 'ASC', 'DESC');
-	
+
 	/**
 	 * Gallery Repository
-	 * 
+	 *
 	 * @var tx_aigallery_galleries
 	 */
 	protected $galleryRepository = null;
@@ -113,8 +113,8 @@ class tx_aigallery_pi1 extends tslib_pibase {
 	 * The main method of the PlugIn
 	 *
 	 * @param string $content: The PlugIn content
-	 * @param array	$conf: The PlugIn configuration
-	 * @return The content that is displayed on the website
+	 * @param array $conf: The PlugIn configuration
+	 * @return string The content that is displayed on the website
 	 */
 	function main($content, $conf) {
 
@@ -164,7 +164,7 @@ class tx_aigallery_pi1 extends tslib_pibase {
 	 * Initializes the Plugin
 	 *
 	 * @param array	$conf Typoscript configuration
-	 * @return void
+	 * @return	void
 	 */
 	protected function initialize($conf) {
 
@@ -194,13 +194,13 @@ class tx_aigallery_pi1 extends tslib_pibase {
 
 		// Merge into the configuration.
 	    $this->conf = array_merge($this->lConf, $this->conf);
-        
+
 		// Initializes the repository for galleries
         $galleryRepository = t3lib_div::makeInstance('tx_aigallery_galleries');
         $galleryRepository->initialize($this->cObj);
-		
+
 		$this->galleryRepository = $galleryRepository;
-		
+
 		// Parse Configuration.
 		$this->parseConfiguration();
 
@@ -224,7 +224,7 @@ class tx_aigallery_pi1 extends tslib_pibase {
 
 			$this->conf['code'] = self::CODE_SINGLE;
 		}
-		
+
 		// Set remaining fields on repository
 		$this->galleryRepository->setFields($this->conf['repositoryFields']);
 		$this->galleryRepository->setOrderBy($this->conf['orderby']);
@@ -241,7 +241,7 @@ class tx_aigallery_pi1 extends tslib_pibase {
 
 		// Select all possible galleries
         $this->galleryRepository->load();
-		
+
 		// Read subparts
 		$template = array();
 		$template['list'] = $this->cObj->getSubpart($this->templateCode, '###TEMPLATE_LIST###');
@@ -331,10 +331,10 @@ class tx_aigallery_pi1 extends tslib_pibase {
 
         // Make sure there is no SQL Error.
         if ($this->galleryRepository->isValidResource()) {
-            
+
 			// Load rows
             $rows = $this->galleryRepository->getRows();
-			
+
             // Walk galleries.
             $subpartItem = '';
 
@@ -564,7 +564,7 @@ class tx_aigallery_pi1 extends tslib_pibase {
 	/**
 	 * Generates the marker array of a rowset
 	 *
-	 * @param array	$row Row from DB
+	 * @param array $row Row from DB
 	 * @param string $section Which section in the "fields." array we want to use
 	 * @return array Marker Array
 	 */
@@ -586,8 +586,8 @@ class tx_aigallery_pi1 extends tslib_pibase {
 	/**
 	 * Makes a marker array from local ts and row
 	 *
-	 * @param array	$row DB Row
-	 * @param array	$tsFields Typoscript field definitions
+	 * @param array $row DB Row
+	 * @param array $tsFields Typoscript field definitions
 	 * @return array
 	 */
 	protected function makeMarkerArray($row, $tsFields) {
@@ -696,10 +696,10 @@ class tx_aigallery_pi1 extends tslib_pibase {
         } else {
             $this->validConfiguration = false;
         }
-		
+
 		// 5. Repository Fields
 		if (isset($this->conf['repositoryFields'])) {
-			
+
 			// Verify fields if so wanted
             if ($this->conf['verifyRepositoryFields'] && !$this->galleryRepository->verifyFields($this->conf['repositoryFields'])) {
             	$this->validConfiguration = false;

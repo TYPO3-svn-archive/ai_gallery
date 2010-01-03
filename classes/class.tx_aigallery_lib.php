@@ -26,13 +26,10 @@
  *
  *
  *
- *   47: class tx_aigallery_lib
- *   73:     function tsCountImages($content, $conf)
- *  104:     function tsGalleryNavigation($content, $conf)
- *  219:     function tsPaginator($content, $conf)
- *  304:     protected function initializeRepository()
+ *   44: class tx_aigallery_lib
+ *   54:     public static function getImagesInDir($folder)
  *
- * TOTAL FUNCTIONS: 4
+ * TOTAL FUNCTIONS: 1
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -45,34 +42,34 @@
  * @subpackage ai_gallery
  */
 class tx_aigallery_lib {
-	
+
 	const TABLE_GALLERIES = 'tx_aigallery_galleries';
-	
+
 	/**
 	 * Returns a comma separated list of all images in a folder
-	 * 
+	 *
 	 * @param string $folder absolute Path to the dir
 	 * @return string
 	 */
 	public static function getImagesInDir($folder) {
-		
+
 		$images = '';
-		
+
 		t3lib_div::loadTCA(self::TABLE_GALLERIES);
         $allowedExt = $GLOBALS['TCA'][self::TABLE_GALLERIES]['columns']['images']['config']['allowed'];
-        
+
         if (t3lib_div::isAbsPath($folder)) {
-            
+
             $files = t3lib_div::getFilesInDir($folder, $allowedExt);
-            
+
             // Add files to be imported
             foreach ($files as $file) {
                 $images .= $folder . $file . ',';
             }
-            
+
             $images = substr($images, 0, -1);
         }
-		
+
 		return $images;
 	}
 }

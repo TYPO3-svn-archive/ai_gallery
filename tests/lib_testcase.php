@@ -45,9 +45,23 @@ class lib_testcase extends tx_phpunit_testcase {
 	/**
 	 * Image Files we create
 	 * 
-	 * @var
+	 * @var array
 	 */
 	protected $imageFiles = array('01.jpg','02.png', '03.gif', '04.jpeg');
+	
+	/**
+	 * Example Array of files we will create, but should be excluded
+	 * 
+	 * @var array
+	 */
+	protected $invalidFiles = array('05.pdf', '06.doc', '07.psd', '08.jp');
+	
+	/**
+	 * Allowed image extensions
+	 * 
+	 * @var array
+	 */
+	protected $allowedExtensions = array('gif', 'png', 'jpg', 'jpeg');
 	
 	/**
 	 * Create a temporary directory to test image capabilities
@@ -70,6 +84,10 @@ class lib_testcase extends tx_phpunit_testcase {
 			foreach ($this->imageFiles as $file) {
 				touch($this->tmpDirectory . $file);
 			}
+			
+			foreach ($this->invalidFiles as $invalidFile) {
+				touch($this->tmpDirectory . $invalidFile);
+			}
 		}
 		
 	}
@@ -84,7 +102,7 @@ class lib_testcase extends tx_phpunit_testcase {
 	}
 	
 	/**
-	 * Tests if the files were created
+	 * Tests if the image files were created
 	 * 
 	 * @return void 
 	 */
@@ -95,6 +113,38 @@ class lib_testcase extends tx_phpunit_testcase {
 		}
 		
 	}
+	
+	/**
+     * Tests if the invalid files were created
+     * 
+     * @return void 
+     */
+    public function testInvalidFiles() {
+        
+        foreach ($this->invalidFiles as $invalidFile) {
+            $this->assertTrue(is_file($this->tmpDirectory . $invalidFile));
+        }
+        
+    }
+	
+	/**
+     * Tests if the valid image extensions in the TCA are as expected
+     * 
+     * @return void 
+     */
+    public function testAllowedImageExtensions() {
+        
+        t3lib_div::loadTCA(self::TABLE_GALLERIES);
+        
+        $tcaImageExtensions = explode(',', $GLOBALS['TCA'][self::TABLE_GALLERIES]['columns']['images']['config']['allowed']);
+        
+        // Make sure we deal with an array
+        $this->assertTrue(is_array($tcaImageExtensions));
+        $this->assertTrue(count($tcaImageExtensions) == count($this->allowedExtensions));
+        
+        // Make sure the same extensions are allowed
+        $this->assertTrue(0 === count(array_diff($tcaImageExtensions, $this->allowedExtensions)));
+    }
 	
 	/**
 	 * Tests if the getImagesInDir function in lib runs
@@ -114,6 +164,11 @@ class lib_testcase extends tx_phpunit_testcase {
 		foreach ($this->imageFiles as $file) {
 			$this->assertTrue(in_array($this->tmpDirectory . $file, $files));
 		}
+		
+		// Make sure non of the invalid files are present 
+		foreach ($this->invalidFiles as $invalidFile) {
+            $this->assertFalse(in_array($this->tmpDirectory . $invalidFile, $files));
+        }
 	}
 	
 	/**
@@ -128,6 +183,10 @@ class lib_testcase extends tx_phpunit_testcase {
 			foreach ($this->imageFiles as $file) {
 				@unlink($this->tmpDirectory . $file);
 			}
+			
+			foreach ($this->invalidFiles as $invalidFile) {
+                @unlink($this->tmpDirectory . $invalidFile);
+            }
 		}
 		
 		// Delete folder

@@ -27,10 +27,10 @@
  *
  *
  *   47: class tx_aigallery_tsfunc
- *   73:     function tsCountImages($content, $conf)
- *  104:     function tsGalleryNavigation($content, $conf)
- *  219:     function tsPaginator($content, $conf)
- *  304:     protected function initializeRepository()
+ *   73:     public function tsCountImages($content, $conf)
+ *  103:     public function tsGalleryNavigation($content, $conf)
+ *  218:     public function tsPaginator($content, $conf)
+ *  303:     protected function initializeRepository()
  *
  * TOTAL FUNCTIONS: 4
  * (This index is automatically created/updated by the extension "extdeveval")
